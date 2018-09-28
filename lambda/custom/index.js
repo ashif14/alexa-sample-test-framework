@@ -8,12 +8,12 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+    const speechText = 'Hello World!';
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
+      // .reprompt(speechText)
+      // .withSimpleCard('Hello World', speechText)
       .getResponse();
   },
 };
@@ -26,9 +26,13 @@ const HelloWorldIntentHandler = {
   handle(handlerInput) {
     const speechText = 'Hello World!';
 
+    const attributes = handlerInput.attributesManager.getSessionAttributes();
+
+    attributes.activity = 'eating';
+
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      // .withSimpleCard('Hello World', speechText)
       .getResponse();
   },
 };
